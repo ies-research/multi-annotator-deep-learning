@@ -1,4 +1,4 @@
-# Multi-annotator Deep Learning: A Modular Probabilistic Framework
+# Multi-annotator Deep Learning: A Probabilistic Framework for Classification
 
 Authors: Marek Herde, Denis Huseljic, and Bernhard Sick
 
