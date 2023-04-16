@@ -1,5 +1,5 @@
 """
-Code of this file is based on the implementations at: https://github.com/jrfiedler/xynn.
+Code is based on https://github.com/jrfiedler/xynn.
 """
 import torch
 

@@ -155,6 +155,7 @@ def write_commands(
         f"#SBATCH --get-user-env",
         f"#SBATCH --cpus-per-task={cpus_per_task}",
         f"#SBATCH --partition=main",
+        f"#SBATCH --exclude=radagast,irmo,alatar",
         f"#SBATCH --output={slurm_logs_path}/{model_name}_{data_set_name}_{data_type}_%A_%a.log",
         f"#SBATCH --error={slurm_error_logs_path}/{model_name}_{data_set_name}_{data_type}_%A_%a.log",
     ]

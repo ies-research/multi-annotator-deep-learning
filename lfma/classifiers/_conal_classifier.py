@@ -50,7 +50,7 @@ class CoNALClassifier(LightningClassifier):
         cost_matrix=None,
         random_state=None,
     ):
-        super(CoNALClassifier, self).__init__(
+        super().__init__(
             module_class=CoNALModule,
             module_dict=module_dict,
             trainer_dict=trainer_dict,

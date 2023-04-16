@@ -22,10 +22,9 @@ from evaluation.experiment_utils import (
 
 from evaluation.config_utils import config_dict_to_file_name
 
-from pytorch_lightning import seed_everything
+from lightning_lite.utilities.seed import seed_everything
 
-# ADJUST the absolute path where the results are to be saved.
-RESULT_PATH = "./lfma_results"
+RESULT_PATH = "/mnt/work/madl/lfma_results"
 
 ex = Experiment()
 

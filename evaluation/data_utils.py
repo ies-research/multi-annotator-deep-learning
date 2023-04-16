@@ -7,8 +7,7 @@ from sklearn.model_selection import train_test_split
 
 from torchvision import transforms
 
-# ADJUST absolut path to the data sets.
-DATA_PATH = "./lfma_data_sets"
+DATA_PATH = "/mnt/work/madl/lfma_data_sets"
 TABULAR_DATA_SETS = [
     "toy-classification",
     "letter",

@@ -60,7 +60,7 @@ class CoNALModule(LightningModule):
         lr_scheduler=None,
         lr_scheduler_dict=None,
     ):
-        super(CoNALModule, self).__init__()
+        super().__init__()
         self.n_classes = n_classes
         self.n_annotators = n_annotators
         self.gt_net = gt_net

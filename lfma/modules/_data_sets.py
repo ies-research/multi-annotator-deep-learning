@@ -18,7 +18,7 @@ class MultiAnnotatorDataSet(Dataset):
     """
 
     def __init__(self, X, y=None, A=None, transform=None):
-        super(MultiAnnotatorDataSet).__init__()
+        super().__init__()
         self.X = X
         self.y = y
         self.A = A
@@ -58,7 +58,7 @@ class EMMultiAnnotatorDataSet(MultiAnnotatorDataSet):
     """
 
     def __init__(self, X, y=None, y_est=None, A=None, transform=None):
-        super(EMMultiAnnotatorDataSet).__init__(X=X, y=y, A=A, transform=transform)
+        super().__init__(X=X, y=y, A=A, transform=transform)
         self.y_est = torch.zeros_like(y).float() if y_est is None else y_est
 
     def __getitem__(self, idx):

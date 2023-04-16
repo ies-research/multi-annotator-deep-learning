@@ -2,16 +2,16 @@ import os
 
 from experiment_utils import write_commands
 
-# ADJUST the absolute path to `run_experiment.py` Python script.
-run_experiment_path = "./run_experiment.py"
+# Path to `run_experiment.py` Python script.
+run_experiment_path = "/mnt/work/madl/evaluation/run_experiment.py"
 
-# ADJUST the flag to decide whether the commands should be generated for a SLURM cluster.
+# Flag whether the commands should be generated for a SLURM cluster.
 use_slurm = True
 python_command = "srun python -u" if use_slurm else "python -u"
 
-# ADJUST the paths to decide where the log files are to be stored.
-slurm_logs_path = "./lfma_logs"
-slurm_error_logs_path = "./lfma_error_logs"
+# If slurm is available, this path defines where the log files are to be stored.
+slurm_logs_path = "/mnt/work/madl/lfma_logs"
+slurm_error_logs_path = "/mnt/work/madl/lfma_error_logs"
 
 # General experimental setup.
 data_set_name_list = ["letter", "fmnist", "cifar10", "svhn", "label-me"]
@@ -58,7 +58,7 @@ lr_list = [0.01, 0.005, 0.001]
 weight_decay_list = [0.0001, 0.001, 0]
 lr_scheduler = "CosineAnnealing"
 
-# ADJUST the server parameters according to your individual requirements.
+# Server setup: Adjust the parameters according to your individual requirements.
 mem_dict = {
     "none": "20gb",
     "rand-indep_10_100": "40gb",
@@ -124,9 +124,17 @@ use_annotator_features_dict = {
 }
 ovat_dict = {
     "embed_size": [16, 8, 32],
-    "eta": [0.8, 0.9, 0.7],
+    "eta": [0.8, 0.9, 0.7, 0.1],
     "lmbda": [0],
-    "alpha_beta": [[1.25, 0.25], [1.5, 0.5], [None, None]],
+    "alpha_beta": [
+        [1.25, 0.25],
+        [1.5, 0.5],
+        [1.118, 0.236],
+        [1.226, 0.452],
+        [1.56, 0.28],
+        [2.22, 0.61],
+        [None, None]
+    ],
     "ap_use_residual": {"none": [False], "learned": [True, False]},
     "ap_use_outer_product": {"none": [False], "learned": [True, False]},
 }

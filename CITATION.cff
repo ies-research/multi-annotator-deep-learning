@@ -13,3 +13,19 @@ authors:
 title: "multi-annotator-deep-learning"
 date-released: 2023-03-01
 url: "https://github.com/ies-research/multi-annotator-deep-learning"
+preferred-citation:
+  type: article
+  authors:
+  - family-names: "Herde"
+    given-names: "Marek"
+    orcid: "https://orcid.org/0000-0003-4908-122X"
+  - family-names: "Huseljic"
+    given-names: "Denis"
+    orcid: "https://orcid.org/0000-0001-6207-1494"
+  - family-names: "Sick"
+    given-names: "Bernhard"
+    orcid: "https://orcid.org/0000-0001-9467-656X"
+  doi: "https://doi.org/10.48550/arXiv.2304.02539"
+  journal: "arXiv"
+  title: "Multi-annotator Deep Learning: A Probabilistic Framework for Classification"
+  year: 2023

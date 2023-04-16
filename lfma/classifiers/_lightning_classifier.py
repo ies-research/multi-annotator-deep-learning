@@ -89,7 +89,7 @@ class LightningClassifier(SkactivemlClassifier, AnnotatorModelMixin, ABC):
             "allow_nd": True,
             "dtype": np.float32,
         }
-        X, y, _ = super(LightningClassifier, self)._validate_data(
+        X, y, _ = super()._validate_data(
             X=X,
             y=y,
             check_X_dict=self._check_X_dict,

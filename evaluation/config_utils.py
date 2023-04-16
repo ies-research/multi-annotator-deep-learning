@@ -132,7 +132,7 @@ def config_query(config_dict, path="./"):
     return res_dict
 
 
-def gen_results_table(res_dict, param):
+def gen_results_table(res_dict, param, decimals=3):
     """
     Takes as input a dictionary of results, provided by the `config_query` function, and computes the mean results
     for the different values of the given parameter.
@@ -177,10 +177,12 @@ def gen_results_table(res_dict, param):
         res_df["value"].append(param_value)
         for perf_key, perf_scores in param_value_dict.items():
             if not perf_key in res_df:
-                res_df[perf_key] = [f"{np.round(perf_scores.mean(), 3):.3f} +- {np.round(perf_scores.std(), 3):.3f}"]
+                res_df[perf_key] = [f"{np.round(perf_scores.mean(), decimals):.{decimals}f}"
+                                    f" +- {np.round(perf_scores.std(), decimals):.{decimals}f}"]
             else:
                 res_df[perf_key].append(
-                    f"{np.round(perf_scores.mean(), 3):.3f} +- {np.round(perf_scores.std(), 3):.3f}"
+                    f"{np.round(perf_scores.mean(), decimals):.{decimals}f} "
+                    f"+- {np.round(perf_scores.std(), decimals):.{decimals}f}"
                 )
     res_df = pd.DataFrame(res_df)
     return res_df

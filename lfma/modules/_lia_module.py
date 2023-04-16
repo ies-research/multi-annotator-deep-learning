@@ -65,7 +65,7 @@ class LIAModule(LightningModule):
         lr_scheduler=None,
         lr_scheduler_dict=None,
     ):
-        super(LIAModule, self).__init__()
+        super().__init__()
         self.n_classes = n_classes
         self.gt_embed_x = gt_embed_x
         self.gt_mlp = gt_mlp

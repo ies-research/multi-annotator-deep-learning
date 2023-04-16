@@ -51,7 +51,7 @@ class REACClassifier(LightningClassifier):
         cost_matrix=None,
         random_state=None,
     ):
-        super(REACClassifier, self).__init__(
+        super().__init__(
             module_class=REACModule,
             module_dict=module_dict,
             trainer_dict=trainer_dict,

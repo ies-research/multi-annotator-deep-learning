@@ -59,11 +59,6 @@ class AggregateModule(LightningModule):
         default.
     lr_scheduler_dict : dict, optional (default=None)
         Parameters passed to `lr_scheduler`.
-
-    References
-    ----------
-    [1] Herde, Marek, Huseljic, Denis, and Sick, Bernhard. "Mulit-annotator Deep Learning: A Modular Probabilistic
-        Framework."
     """
 
     def __init__(
@@ -84,7 +79,7 @@ class AggregateModule(LightningModule):
         lr_scheduler=None,
         lr_scheduler_dict=None,
     ):
-        super(AggregateModule, self).__init__()
+        super().__init__()
         self.n_classes = n_classes
         self.gt_embed_x = gt_embed_x
         self.gt_mlp = gt_mlp
