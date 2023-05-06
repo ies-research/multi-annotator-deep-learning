@@ -142,7 +142,7 @@ def write_commands(
 ):
     commands = list(dict.fromkeys(commands).keys())
     n_tasks = len(commands)
-    n_lines = 15 if use_gpu else 14
+    n_lines = 14 if use_gpu else 13
     if n_parallel_jobs > n_tasks:
         n_parallel_jobs = n_tasks
     print(f"{data_set_name}-{data_type}: {n_tasks}")
@@ -155,7 +155,6 @@ def write_commands(
         f"#SBATCH --get-user-env",
         f"#SBATCH --cpus-per-task={cpus_per_task}",
         f"#SBATCH --partition=main",
-        f"#SBATCH --exclude=radagast,irmo,alatar",
         f"#SBATCH --output={slurm_logs_path}/{model_name}_{data_set_name}_{data_type}_%A_%a.log",
         f"#SBATCH --error={slurm_error_logs_path}/{model_name}_{data_set_name}_{data_type}_%A_%a.log",
     ]
