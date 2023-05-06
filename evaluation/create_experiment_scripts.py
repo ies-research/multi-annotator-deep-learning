@@ -125,7 +125,6 @@ use_annotator_features_dict = {
 ovat_dict = {
     "embed_size": [16, 8, 32],
     "eta": [0.8, 0.9, 0.7, 0.1],
-    "lmbda": [0],
     "alpha_beta": [
         [1.25, 0.25],
         [1.5, 0.5],
@@ -182,7 +181,6 @@ for data_set_name, data_type_list in data_type_dict.items():
                                             f"model_name={model_name} "
                                             f"model_dict.eta={ovat_dict['eta'][0]} "
                                             f"model_dict.confusion_matrix={confusion_matrix} "
-                                            f"model_dict.lmbda={ovat_dict['lmbda'][0]} "
                                             f"model_dict.alpha={ovat_dict['alpha_beta'][0][0]} "
                                             f"model_dict.beta={ovat_dict['alpha_beta'][0][1]} "
                                             f"model_dict.embed_size={ovat_dict['embed_size'][0]} "
