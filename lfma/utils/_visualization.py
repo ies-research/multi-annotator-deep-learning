@@ -104,11 +104,10 @@ def plot_annot_perfs_clf(
                 X[:, 0],
                 X[:, 1],
                 c=y_true,
-                edgecolor="k",
                 s=markersize,
-                linewidth=0.5,
                 zorder=2,
                 cmap=cmap_clf,
+                edgecolors="k",
             )
         else:
             cmap = cmap_annot
@@ -129,28 +128,26 @@ def plot_annot_perfs_clf(
                 X_a[z, 0],
                 X_a[z, 1],
                 marker="o",
-                edgecolor="k",
-                linewidth=0.5,
                 cmap=cmap_clf,
                 zorder=2,
                 s=markersize,
                 c=y_a[z],
                 vmin=0,
                 vmax=1,
+                edgecolors="k",
                 linewidths=0.5,
             )
             ax.scatter(
                 X_a[~z, 0],
                 X_a[~z, 1],
                 marker="X",
-                edgecolor="k",
-                linewidth=1,
                 cmap=cmap_clf,
                 zorder=2,
                 s=markersize,
                 c=y_a[~z],
                 vmin=0,
                 vmax=1,
+                edgecolors="k",
                 linewidths=0.5,
             )
         probs = np.round(probs, 2)

@@ -7,6 +7,8 @@ from itertools import combinations
 
 from copy import deepcopy
 
+from scipy.special import binom
+
 from skactiveml.utils import is_labeled
 
 from sklearn.preprocessing import LabelEncoder
@@ -237,7 +239,7 @@ def annot_sim_clf_cluster(
     return y, y_cluster
 
 
-def generate_expert_cluster_combinations(n_annotators, n_clusters, n_expert_clusters, random_state):
+def generate_expert_cluster_combinations(n_annotators, n_clusters, n_expert_clusters, random_state, max_combs=15e7):
     """
     Helper function to randomly select expert clusters of annotators.
 
@@ -251,14 +253,22 @@ def generate_expert_cluster_combinations(n_annotators, n_clusters, n_expert_clus
         Number of expert clusters per annotator.
     random_state : int or np.random.RandomState or None, optional (default=None)
         Random state for selecting expert clusters.
+    max_combs : int, optional (default=10e8)
+        Maximum number of elements in the expert cluster combinations.
     """
-    combs = []
-    combs_list = np.array(list(combinations(np.arange(n_clusters), n_expert_clusters)))
     random_state = check_random_state(random_state)
-    random_order = random_state.choice(np.arange(len(combs_list)), size=len(combs_list), replace=False)
-    combs_list = combs_list[random_order]
-    while True:
+    actual_combs = binom(n_clusters, n_expert_clusters) * n_expert_clusters
+    if actual_combs <= max_combs:
+        combs = []
+        combs_list = np.array(list(combinations(np.arange(n_clusters), n_expert_clusters)))
+        random_order = random_state.choice(np.arange(len(combs_list)), size=len(combs_list), replace=False)
+        combs_list = combs_list[random_order]
         for comb in combs_list:
             combs.append(list(comb))
             if len(combs) == n_annotators:
                 return np.array(combs, dtype=int)
+    else:
+        cluster_indices = np.arange(n_clusters)
+        combs = np.vstack([random_state.choice(cluster_indices, size=n_expert_clusters) for _ in range(n_annotators)])
+        return np.sort(combs, axis=1)
+

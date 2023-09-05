@@ -15,7 +15,7 @@ TABULAR_DATA_SETS = [
     "music",
 ]
 BW_IMAGE_DATA_SETS = ["fmnist"]
-RGB_IMAGE_DATA_SETS = ["cifar10", "svhn"]
+RGB_IMAGE_DATA_SETS = ["cifar10", "svhn", "cifar100"]
 
 
 def load_data(
@@ -246,7 +246,7 @@ def load_data(
                 transforms.RandomCrop(28, padding=4),
             ]
         )
-    elif data_set_name == "cifar10":
+    elif data_set_name in ["cifar10", "cifar100"]:
         ds["transform"] = transforms.Compose(
             [
                 transforms.RandomCrop(32, padding=4),

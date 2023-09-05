@@ -73,6 +73,11 @@ class MaDLModule(LightningModule):
         Parameters passed to `lr_scheduler`.
     verbose : bool, optional (default=False)
         Flag whether the learned annotator weights and `gamma` parameter are to be reported after each training epoch.
+
+    References
+    ----------
+    [1] Herde, Marek, Huseljic, Denis, and Sick, Bernhard. "Mulit-annotator Deep Learning: A Modular Probabilistic
+        Framework for Classification."
     """
 
     def __init__(

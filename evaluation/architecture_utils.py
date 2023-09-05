@@ -6,6 +6,7 @@ from evaluation.data_utils import (
     BW_IMAGE_DATA_SETS,
     RGB_IMAGE_DATA_SETS,
 )
+from evaluation.wide_resnet import WideResNet
 
 from lfma.classifiers import (
     MaDLClassifier,
@@ -541,21 +542,30 @@ def get_gt_net(data_set_name, n_classes, n_features, dropout_rate, pretrained=Fa
             nn.Dropout(p=dropout_rate),
         )
     elif data_set_name in RGB_IMAGE_DATA_SETS:
-        n_hidden_neurons = 512
-        resnet = resnet18(pretrained=pretrained)
-        # Init layer does not have a kernel size of 7 since cifar has a smaller
-        # size of 32x32
-        if not pretrained:
-            resnet.conv1 = nn.Conv2d(3, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            resnet.maxpool = nn.Identity()
-        children_list = []
-        for n, c in resnet.named_children():
-            children_list.append(c)
-            if n == "avgpool":
-                break
-        children_list.append(nn.Flatten())
-        children_list.append(nn.Dropout(p=dropout_rate))
-        gt_net_ordered_dict["gt_embed_x"] = nn.Sequential(*children_list)
+        if pretrained or data_set_name in ["cifar10", "svhn"]:
+            n_hidden_neurons = 512
+            resnet = resnet18(pretrained=pretrained)
+            # Init layer does not have a kernel size of 7 since cifar has a smaller
+            # size of 32x32
+            if not pretrained:
+                resnet.conv1 = nn.Conv2d(3, 64, kernel_size=3, padding=1, bias=False)
+                resnet.bn1 = nn.BatchNorm2d(64)
+                resnet.maxpool = nn.Identity()
+            children_list = []
+            for n, c in resnet.named_children():
+                children_list.append(c)
+                if n == "avgpool":
+                    break
+            children_list.append(nn.Flatten())
+            children_list.append(nn.Dropout(p=dropout_rate))
+            gt_net_ordered_dict["gt_embed_x"] = nn.Sequential(*children_list)
+        elif data_set_name == "cifar100":
+            n_hidden_neurons = 640
+            wide_resnet = WideResNet(depth=28, widen_factor=10, dropout_rate=dropout_rate, num_classes=n_classes)
+            gt_net_ordered_dict["gt_embed_x"] = nn.Sequential(
+                wide_resnet.feature_extractor,
+                nn.Dropout(p=dropout_rate)
+            )
     else:
         raise ValueError(
             f"{data_set_name} must be in " f"{TABULAR_DATA_SETS + BW_IMAGE_DATA_SETS + RGB_IMAGE_DATA_SETS}."

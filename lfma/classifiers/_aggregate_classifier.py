@@ -36,6 +36,11 @@ class AggregateClassifier(LightningClassifier):
     random_state : int or None, optional (default=None)
         Determines random number for `predict` method. Pass an int for reproducible results across multiple method
         calls. Defines also a global seed via `seed_everything`.
+
+    References
+    ----------
+    [1] Herde, Marek, Huseljic, Denis, and Sick, Bernhard. "Mulit-annotator Deep Learning: A Modular Probabilistic
+        Framework for Classification."
     """
 
     def __init__(

@@ -94,7 +94,6 @@ class REACModule(LightningModule):
             p_perf = F.softmax(self.confusion_matrices, dim=-1)
             trace = p_perf.diagonal(offset=0, dim1=-2, dim2=-1).sum(-1).mean()
             loss += self.lmbda * trace
-        loss /= len(x)
         return loss
 
     def validation_step(self, batch, batch_idx):

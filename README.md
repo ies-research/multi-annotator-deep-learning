@@ -24,10 +24,10 @@ Authors: Marek Herde, Denis Huseljic, and Bernhard Sick
 ## How to execute experiments?
 To accommodate a large number of experiments, we utilized a computer cluster equipped with multiple V100 and A100 GPUs,
 allowing us to execute many experiments simultaneously. Without access to such a cluster, reproducing all results 
-presented in the accompanying article would take several days.
+presented in the accompanying article would take much more time.
 
 In the following, we describe step-by-step how to execute all experiments presented in the accompanied article. 
-As a prerequisites, we assume to have a Linux distribution as operating system and 
+As a prerequisite, we assume to have a Linux distribution as operating system and 
 [`conda`](https://docs.conda.io/en/latest/) installed on your machine.
 
 1. _Setup Python environment:_
@@ -42,7 +42,7 @@ projectpath$ pip install torch==1.13.1+cu116 torchvision==0.14.1+cu116 torchaudi
 ```
 Subsequently, we install the remaining requirements:
 ```bash
-projectpath$ pip3 install -r requirements.txt
+projectpath$ pip install -r requirements.txt
 ```
 2. _Create and download data sets:_ Start jupyter-notebook and follow the instructions in the jupyter-notebook file
 [`notebooks/data_set_creation_download.ipynb`](/notebooks/data_set_creation_download.ipynb).

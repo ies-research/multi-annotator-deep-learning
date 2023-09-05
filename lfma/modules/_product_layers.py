@@ -1,5 +1,11 @@
 """
-Code is based on https://github.com/jrfiedler/xynn.
+Coda has been taken from the following GitHub repository
+
+https://github.com/jrfiedler/xynn
+
+and is associated to the following paper
+
+Fiedler, James. "Simple modifications to improve tabular neural networks." arXiv preprint arXiv:2108.03214 (2021).
 """
 import torch
 
