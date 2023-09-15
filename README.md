@@ -107,12 +107,13 @@ If you use ``multi-annotator-deep-learning`` in one of your research projects or
 accompanied article, please use the following:
 
 ```
-@article{madl2023,
-    title={{Multi-annotator Deep Learning: A Probabilistic Framework for Classification}},
+@article{
+    herde2023multiannotator,
+    title={Multi-annotator Deep Learning: A Probabilistic Framework for Classification},
     author={Marek Herde and Denis Huseljic and Bernhard Sick},
-    journal={arXiv:2304.02539},
-    doi={https://doi.org/10.48550/arXiv.2304.02539},
+    journal={Transactions on Machine Learning Research},
+    issn={2835-8856},
     year={2023},
-    url={https://github.com/ies-research/multi-annotator-deep-learning}
+    url={https://openreview.net/forum?id=MgdoxzImlK},
 }
 ```
