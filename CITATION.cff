@@ -25,7 +25,7 @@ preferred-citation:
   - family-names: "Sick"
     given-names: "Bernhard"
     orcid: "https://orcid.org/0000-0001-9467-656X"
-  doi: "https://doi.org/10.48550/arXiv.2304.02539"
-  journal: "arXiv"
+  url: "https://openreview.net/forum?id=MgdoxzImlK"
+  journal: "Transactions on Machine Learning Research"
   title: "Multi-annotator Deep Learning: A Probabilistic Framework for Classification"
   year: 2023
