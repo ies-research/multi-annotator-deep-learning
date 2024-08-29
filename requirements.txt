@@ -1,6 +1,6 @@
 annotlib==1.0.0
 iteration_utilities==0.11.0
-jupyterlab==3.6.7
+jupyterlab==3.6.8
 matplotlib==3.6.2
 numpy==1.23.5
 pandas==1.5.2
